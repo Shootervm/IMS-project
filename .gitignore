@@ -1,0 +1,8 @@
+### C++ template
+# Compiled Object files
+*.o
+*.obj
+
+# IntelliJ project files
+.idea
+*.iml
