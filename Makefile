@@ -1,4 +1,4 @@
-CFLAGS=-g -O2 -Wall
+CFLAGS=-g -O2 -Wall -std=c++11
 PFLAGS=-lsimlib -lm
 
 CC = g++
