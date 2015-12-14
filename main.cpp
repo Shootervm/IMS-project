@@ -1,5 +1,7 @@
 #include <iostream>
 #include <simlib.h>
+#include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -69,7 +71,7 @@ public:
 
     void Behavior() {
         if (enter_queue.Length() > kQueueQuitLength) {
-            unsigned int chance = (unsigned int)(100 * Random());
+            unsigned int chance = (unsigned int) (100 * Random());
             if (chance <= kQueueQuitChance) {
                 return; // quit
             }
@@ -99,20 +101,25 @@ public:
             this->Passivate();
         }
 
-        // get the tray
-        ProcessFacility(tray_stand, kTrayStandProcessTime);
+        // generate bool from chance if customer wants a soup
+        bool want_soup = 100 * Random() <= kCustomerWithSoup;
 
-        ActivateQueue(enter_queue);
+        //capacity of food Queues are limited, SoupQ is only 3 and MainFoodQ is 4
+        if ((want_soup && soup_queue.size() < 4) || (!want_soup && food_store.Q->size() < 5)) {
+            // get the tray
+            ProcessFacility(tray_stand, kTrayStandProcessTime);
 
-        // pass this customer to next stage
-        HandleFood();
+            ActivateQueue(enter_queue);
+
+            // pass this customer to next stage
+            HandleFood(want_soup);
+        }
     }
 
     // Randomizes the customers to soup and main
     // food.
-    void HandleFood() {
-        double with_soup = 100 * Random();
-        if (with_soup <= kCustomerWithSoup) {
+    void HandleFood(bool want_soup) {
+        if (want_soup <= kCustomerWithSoup) {
             HandleSoup();
         } else {
             HandleMainFood();
@@ -236,14 +243,17 @@ public:
     }
 };
 
-class CustomerGenerator : public Event {
+class Generator : public Event {
+    vector<Customer *> customers;
 public:
-    CustomerGenerator() {
+    Generator() {
         Activate();
     }
 
     void Behavior() {
-        (new Customer)->Activate();
+        auto c = new Customer;
+        customers.push_back(c);
+        c->Activate();
         this->Activate(Time + Exponential(kCustomerArrivalTime));
     }
 };
@@ -253,7 +263,7 @@ int main() {
 
     Init(0, 60 * 60 * 3);
 
-    new CustomerGenerator();
+    Generator *gen = new Generator();
     Run();
 
     printf("\n========================= Zobranie tacky  =========================\n");
@@ -279,6 +289,7 @@ int main() {
     return_tray_queue.Output();
     return_tray.Output();
 
+    delete gen;
 
     return 0;
 }
