@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+
+
+\begin{document}
+\begin{titlepage}
+ 
+	\begin{center}
+		\begin{LARGE}
+			Vysoké Učení Technické \\
+			\vspace{0.7cm}
+		\end{LARGE}
+		\vspace{2cm}
+        
+		\includegraphics[width=0.8\textwidth]{fitnew.png}
+
+	\end{center}	
+	
+	\vfill
+	\vspace{2cm}
+	
+	\begin{center}
+		\begin{Large}
+			Dokumentace pro projekt k předmětu IMS \\
+		\end{Large}
+		\bigskip
+		\begin{Huge}
+			 Model studentské menzy\\
+		\end{Huge}
+	\end{center}
+ 
+	\vfill
+ 
+	\begin{center}
+		\begin{Large}
+			\today
+		\end{Large}
+	\end{center}
+ 
+	\vfill
+ 
+	\begin{flushleft}
+		\begin{large}
+			\begin{tabular}{llllll}
+				Autoři: & Vojtech Mašek,	& \url{xmasek15@stud.fit.vutbr.cz} & & \\
+                		& Peter Malina, 	& \url{xmalin26@stud.fit.vutbr.cz} & & \\
+			\end{tabular}
+		\end{large}
+	\end{flushleft}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+	
+\section{Úvod}
+Táto dokumentácia popisuje simuláciu \cite[str. 8]{ims} školskej menzy FIT VUT v Brne, presnejšie menzy Starý Pivovar. Počet študentov vstupujúcich do menzy sa v čase líši, preto je táto práca zameraná práve na simulácie v rôznych časoch. Simulácia sa snaží reflektovať časti systému menzy, vďaka ktorým jej chod nie je plynulý. Simulácia rieši hlavné činnosti menzy, preto nie je úplne podrobná, no využíva priemery nameraných hodnôt, vďaka ktorým by aj pod-činnosti mali byť zahrnuté.
+
+Za účelom správneho vytvorenia modelu \cite[str. 7]{ims} boli vykonané dve hodinové merania a použité dostupné informácie o menzách \cite{menzy}
+
+\subsection{Autori a zdroje faktov}
+Autormi práce sú Peter Malina a Vojtech Mašek.
+
+Vstupné dáta modelu boli vytvorené na základe pozorovaní v menze a kozultovaní s jej zákazníkmi. Na hodnotách sa teda môže prejaviť odchylka spôsobená vybratou vzorkou ľudí.
+\subsection{Validita projektu}
+Overenie validity modelu \cite[str. 37]{ims} bolo dokázané porovnaním výsledného chovania modelu \cite[str. 24]{ims} a systému \cite[str. 7]{ims} ktorý bol vymodelovaný.
+
+Počet študentov prichádzajúcich do menzy bol overený na základe priameho pozorovania príchodov v rámci niekoľko-násobného pozorovania príchodov v rôznych časových úsekoch. Pozorovania boli rozdelené do štyroch úsekov: čas po otvorení menzy, v špičke, mimo špičky a pred zatvorením. Tieto časi boli spriemerované pre celkovú simuláciu. Stredná hodnota funkcie exponenciálnej pravdepodobnosti \cite[str. 91]{ims} je XXX sekúnd. Táto hodnota určuje priemer príchodov študentov do menzy v rámci celej otváracej doby.
+
+Validita modelu v simulovaní výberu jedál môže obsahovať odchylky spôsobené rôznorodosťou jedálnička pre daný deň. V rámci niekoľko experimentov boli zaznamenané rozdiely v preferencii výberu ľudí na základe aktuálnej ponuky jedálnička.
+
+Validita výpočtu ľudí, ktorí sa rozhodnú odísť pri veľkej rade bola určená na základe dotazovania 17 ľudí. Preto môže byť toto číslo skreslené.
+
+Časy jadnotlivých procesov boli merané v rámci rôznych časových úsekov. Pri každom vzorku bol pozorovaný iba čas trvania daného procesu. Na základe toho sú možné časové odchylky, keďže sa aj v rámci jednotlivých dní a hodín mení výkon zamestnancov a zákazníkov.
+
+Zákazníci, ktorí si odniesli pizzu v krabici aj tí, ktorí ju konzumovali na mieste, boli započítaný do štatistík konzumácie hlavného jedla.
+
+\section{Rozbor témy, použitých metód a technológií}
+Simulácia sa zaoberá fungovaním školskej menzy. Ide o stravovacie zariadenie, ktoré poskytuje ľuďom viac možností pre výber jedál, pitia a rôznych pochutín. Keďže je vhodné rôzne možnosti oddeliť, menza sa skladá z viacerých blokov, do ktorých ľudia vstupujú za istým účelom, ako výber hlavného jedla alebo výber pitia.
+
+Zákazníkmi menzy sú väčšinou zamestnanci školy a študenti, keďže pre nich platia zľavy na sortiment. Preto sa v menzách často platí školskou alebo stravovaciou kartou, čo proces zjednodušuje.
+
+Menzy bývajú otvorené vo väčšine prípadov iba cez pracovný týždeň, teda od pondelka do piatka, najčastejšie v pracovných hodinách. Počet zákazníkov prichádzajúcich do menzy nie je rovnomerný počas celého času. Špičky v príchodoch a naopak, veľmi slabé počty príchodov sú často odvoditeľné z počtu prednášok a ich prestávok či koncov v daných dňoch. Menzy sú tiež navštevované zamestnancami z okolitých firiem, čo dokáže ešte zvýšiť nápor na menzu okolo obeda.
+
+Fungovanie ménz v rámci VUT funguje veľmi podobne. Zákazník vstupujúci do zariadenia by si mal zobrať tácku a príbory. Odtiaľto človek postupuje k pultom s jedlom a pitím, ktoré chce využiť, väčšinou v istom poradí. Ak má človek záujem o polievku, je to prvá vec ktorú si väčšinou zoberie. Ďalej ľudia postupujú k hlavnému jedlu či pizzi, po vyzdvihnutí hlavného jedla k pitiu. Nakoniec majú ľudia možnosť zobrať si koláče, bagety, energetické nápoje či šaláty.
+
+Menzy sú obstarané minimálne jednou kasou, pričom v niektorých menzách kás existuje hneď niekoľko. Pri kase má človek možnosť platiť študentskou kartou alebo hotovosťou. Keďže na študentskú kartu platí zľava, väčšina študentov ňou platí. Študentská karta obsahuje kredit, ktorý je potrebné dobíjať. Existuje tiež možnosť automatického dobitia karty cez účet pri prečerpaní každý mesiac. Človek teda nemusí kartu stále dobíjať. Menšina ľudí tiež platí v hotovosti, respektíve nie sú zamestnancami ani študentami.
+
+Pre náš účeľ bola vybratá menza Starý Pivovar sa nachádza na Fakulte Informačných Technológií Vysokého Učení Technického v Brne. Táto menza má kapacitu 120 miest pri stoloch \cite{menzy}. 
+
+\subsection{Použité postupy}
+\subsection{Použité technológie}
+Pre vytvorenie simulácie bola použitá knižnica Simlib a jazyk C++11. Pre správne použitie knižnice Simlib boli využité ukážkové zdrojové kódy (\url{http://www.fit.vutbr.cz/~peringer/SIMLIB/examples/}). Bola použitá oficiálna verzia knižnice Simlib (\url{http://www.fit.vutbr.cz/~peringer/SIMLIB/}). Z jazyka C++11 boli použité štandardné knižnice. (\url{http://en.cppreference.com/w/})
+
+\section{Koncepcia}
+
+
+\subsection{Spôsob vyjadrenia modelu}
+Stavy a prechody medzi nimi, ktoré nastávajú v menze sú znázornené na obrázku ~\ref{fig:1_petr_net}. Tento obrázok popisuje všetky pozorované stavy a prechody potrebné k fungovaniu simulácie.
+
+Model sa skladá z viacerých obslučných liniek \cite[str. 163]{ims}, obslužných liniek s kapacitou \cite[str. 163]{ims} a front \cite[str. 163]{ims}. Tie sa používajú pre obsluhu rôznych zariadení a pre simuláciu zamestnancov v menze. V modeli je tiež použitá udalosť \cite[str. 163]{ims}, vďaka ktorej sú generovaný ľudia prichádzajúci do menzy. Proces \cite[str. 163]{ims} ďalej určuje proces zákazníka, ktorý prišiel do menzy.
+
+Vďaka zvoleniu simulácie pomocou Petriho siete boli všetky požiadavky splnené.
+
+\subsection{Popis konceptuálneho modelu}
+
+\section{Architektúra simulačného modelu}
+\subsection{Mapovanie abstaktného modelu na simulačný}
+
+\section{Podstata simulačných experimentov a ich priebeh}
+\subsection{Postup experimentovania}
+\subsection{Dokumentácia jednotlivých experimentov}
+\subsection{Závery experimentov}
+
+\section{Zhrnutie simulačných experimentov a záver}
+
+  \begin{thebibliography}{1}
+
+  \bibitem{ims}
+  \href{http://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf}{IMS Slajdy} \newline
+  \href{http://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf}{\nolinkurl{http://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf}}
+  
+  \bibitem{menzy}
+  \href{http://www.kam.vutbr.cz/?p=nabs}{Informácie o menzách} \newline
+  \href{http://www.kam.vutbr.cz/?p=nabs}{\nolinkurl{http://www.kam.vutbr.cz/?p=nabs}}
+  
+  \bibitem{simlib}
+  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/}{Simlib} \newline
+  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/}{\nolinkurl{http://www.fit.vutbr.cz/~peringer/SIMLIB/}}
+  
+  \bibitem{examples}
+  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/examples/}{Simlib} \newline
+  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/examples/}{\nolinkurl{http://www.fit.vutbr.cz/~peringer/SIMLIB/examples}}
+
+  \end{thebibliography}
+
+\end{document}
