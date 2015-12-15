@@ -36,15 +36,19 @@ typedef struct {
             kReturnTrayProcessTime;
 } ExperimentData;
 
-extern ExperimentData peak;
-extern ExperimentData stable;
-extern ExperimentData closing;
-extern ExperimentData typical;
-extern ExperimentData data;
+// Experiment data that represent four states in cycle
+extern ExperimentData peak;  // state when menza is most crowded
+extern ExperimentData stable; // state when stable amount of customers is arriving
+extern ExperimentData closing; // state when menza is about to close
+extern ExperimentData normal; // state when the lectures are running and only few people are arriving to menza
+extern ExperimentData typical; // average day cycle of menza
 
-extern ExperimentChances chances;
+// actual experiment data that are used
+extern ExperimentData data; // always is assigned to one of the experiment representation data
 
-extern ExperimentEnvironment environment;
+extern ExperimentChances chances; // data used to represent chances and probability of decisions of visitors
+
+extern ExperimentEnvironment environment; // experiment environment data, for example capacity
 
 #endif //IMS_PROJECT_DATA_H
 

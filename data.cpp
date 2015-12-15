@@ -1,7 +1,7 @@
 #include "data.h"
 
 ExperimentData peak = {
-        60 * 60 * 3, // simulationLength
+        60 * 60 * 2, // simulationLength
         17.0, // kCustomerArrivalTime
         4.65, // kTrayStandProcessTime
         5.2, // kSoupTakeTime
@@ -16,7 +16,7 @@ ExperimentData peak = {
         4.0 // kReturnTrayProcessTime
 };
 ExperimentData stable = {
-        60 * 60 * 3, // simulationLength
+        60 * 60 * 2, // simulationLength
         17.0, // kCustomerArrivalTime
         4.65, // kTrayStandProcessTime
         5.2, // kSoupTakeTime
@@ -31,7 +31,7 @@ ExperimentData stable = {
         4.0 // kReturnTrayProcessTime
 };
 ExperimentData closing = {
-        60 * 60 * 3, // simulationLength
+        60 * 60 * 2, // simulationLength
         17.0, // kCustomerArrivalTime
         4.65, // kTrayStandProcessTime
         5.2, // kSoupTakeTime
@@ -45,6 +45,22 @@ ExperimentData closing = {
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
+ExperimentData normal = {
+        60 * 60 * 2, // simulationLength
+        17.0, // kCustomerArrivalTime
+        4.65, // kTrayStandProcessTime
+        5.2, // kSoupTakeTime
+        10.0, // kPizzaOrderTime
+        6.0, // kPreparedFoodTakeTime
+        16.0, // kUnpreparedFoodTakeTime
+        7.3, // kWaterTakeTime
+        5.5, // kETCTakeTime
+        15.0, // kPaymentByCashTime
+        6.5, // kPaymentByISICTime
+        1080.0, // kEatingTime
+        4.0 // kReturnTrayProcessTime
+};
+
 ExperimentData typical = {
         60 * 60 * 3, // simulationLength
         17.0, // kCustomerArrivalTime
@@ -70,6 +86,7 @@ ExperimentChances chances = {
         .kPaymentByCash = 25.0
 };
 
+// Assign this variable to another experiment to see results
 ExperimentData data = typical;
 
 ExperimentEnvironment environment;
