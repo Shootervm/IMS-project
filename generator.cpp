@@ -5,7 +5,6 @@
 Generator::Generator(ExperimentData *data) {
     Activate();
     data_ = data;
-    std::cout << data_->kCustomerArrivalTime;
 }
 
 void Generator::Behavior() {

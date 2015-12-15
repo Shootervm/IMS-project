@@ -3,7 +3,6 @@
 #include "customer.h"
 #include "generator.h"
 
-
 using namespace std;
 
 
@@ -11,7 +10,7 @@ int main() {
 
     Init(0, data.simulationLength);
 
-    Generator *gen = new Generator(&peak);
+    Generator *gen = new Generator(&data);
     Run();
 
     enter_queue.Output();
