@@ -62,8 +62,10 @@ void Customer::HandleTrayStand() {
     // generate bool from chance if customer wants a soup
     bool want_soup = 100 * Random() <= chances.kCustomerWithSoup;
 
-    //capacity of food Queues are limited, SoupQ and MainFoodQ can together hold up to 8 people
-    if (soup_queue.size() + food_store.Q->size() < 9) {
+    //capacity of food Queues are limited, SoupQ and MainFoodQ can together hold up to 8 people,
+    //also if the cashier queue is full no more customers can take their food
+    if (((soup_queue.size() + food_store.Q->size()) <= environment.kCashierQueueCapacity) &&
+        (cashier_queue.size() <= environment.kFoodQueueCapacity)) {
         // get the tray
         ProcessFacility(tray_stand, data.kTrayStandProcessTime);
 
@@ -75,7 +77,7 @@ void Customer::HandleTrayStand() {
 }
 
 void Customer::HandleFood(bool want_soup) {
-    if (want_soup <= chances.kCustomerWithSoup) {
+    if (want_soup) {
         HandleSoup();
     } else {
         HandleMainFood();
