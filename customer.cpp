@@ -1,7 +1,3 @@
-//
-// Created by shooter on 14.12.2015.
-//
-
 #include "customer.h"
 
 Queue enter_queue("Vstupna rada");
