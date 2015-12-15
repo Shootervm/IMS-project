@@ -7,7 +7,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=project
 
 all:
-	$(CC) $(CFLAGS) $(LDFLAGS) customer.cpp simulation.cpp main.cpp -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) $(LDFLAGS) customer.cpp simulation.cpp generator.cpp main.cpp -o $(EXECUTABLE)
 
 run:
 	echo "TODO: run simulations"

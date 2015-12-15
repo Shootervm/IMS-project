@@ -1,25 +1,10 @@
 #include <iostream>
-#include <vector>
 #include <simlib.h>
 #include "customer.h"
+#include "generator.h"
+
 
 using namespace std;
-
-
-class Generator : public Event {
-    vector<Customer *> customers;
-public:
-    Generator() {
-        Activate();
-    }
-
-    void Behavior() {
-        auto c = new Customer();
-        customers.push_back(c);
-        c->Activate();
-        this->Activate(Time + Exponential(data.kCustomerArrivalTime));
-    }
-};
 
 
 int main() {
