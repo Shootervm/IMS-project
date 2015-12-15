@@ -1,3 +1,5 @@
+# IMS project 2015 - 07 Menza
+# authors: xmalin26 & xmasek15
 
 CC=g++
 CFLAGS=-g -O2 -Wall -std=c++11

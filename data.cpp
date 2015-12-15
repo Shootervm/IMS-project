@@ -1,3 +1,6 @@
+// IMS project 2015 - 07 Menza
+// authors: xmalin26 & xmasek15
+
 #include "data.h"
 
 ExperimentData peak = {

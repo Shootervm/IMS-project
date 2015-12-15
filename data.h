@@ -1,3 +1,6 @@
+// IMS project 2015 - 07 Menza
+// authors: xmalin26 & xmasek15
+
 #ifndef IMS_PROJECT_DATA_H
 #define IMS_PROJECT_DATA_H
 

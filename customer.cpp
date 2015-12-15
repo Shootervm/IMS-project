@@ -1,3 +1,6 @@
+// IMS project 2015 - 07 Menza
+// authors: xmalin26 & xmasek15
+
 #include "customer.h"
 
 Queue enter_queue("Vstupna rada");
