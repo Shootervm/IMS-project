@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <simlib.h>
-#include "simulation.h"
+#include "data.h"
 
 extern Queue enter_queue;
 extern Facility tray_stand;

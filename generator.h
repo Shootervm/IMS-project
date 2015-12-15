@@ -8,8 +8,9 @@
 
 class Generator : public Event {
     std::vector<Customer *> customers;
+    ExperimentData *data_;
 public:
-    Generator();
+    Generator(ExperimentData *data);
 
     void Behavior();
 };
