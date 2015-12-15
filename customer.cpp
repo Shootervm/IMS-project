@@ -62,8 +62,8 @@ void Customer::HandleTrayStand() {
     // generate bool from chance if customer wants a soup
     bool want_soup = 100 * Random() <= chances.kCustomerWithSoup;
 
-    //capacity of food Queues are limited, SoupQ is only 3 and MainFoodQ is 4
-    if ((want_soup && soup_queue.size() < 4) || (!want_soup && food_store.Q->size() < 5)) {
+    //capacity of food Queues are limited, SoupQ and MainFoodQ can together hold up to 8 people
+    if (soup_queue.size() + food_store.Q->size() < 9) {
         // get the tray
         ProcessFacility(tray_stand, data.kTrayStandProcessTime);
 

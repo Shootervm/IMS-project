@@ -81,7 +81,7 @@ ExperimentChances chances = {
         .kCustomerWithSoup = 30.0,
         .kCustomerFoodPizza = 15.0,
         .kCustomerFoodPrepared = 30.0,
-        .kCustomerWithWater = 65.0,
+        .kCustomerWithWater = 60.0,
         .kCustomerWithETC = 40.0,
         .kPaymentByCash = 25.0
 };
