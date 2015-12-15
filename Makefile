@@ -8,10 +8,10 @@ EXECUTABLE=project
 
 all:
 	$(CC) $(CFLAGS) $(LDFLAGS) customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)
-	$(CC) $(CFLAGS) $(LDFLAGS) -DE_PEAK customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_peak
-	$(CC) $(CFLAGS) $(LDFLAGS) -DE_OPENING customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_opening
-	$(CC) $(CFLAGS) $(LDFLAGS) -DE_CLOSING customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_closing
-	$(CC) $(CFLAGS) $(LDFLAGS) -DE_NORMAL customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_normal
+	$(CC) $(CFLAGS) -DE_PEAK $(LDFLAGS) customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_peak
+	$(CC) $(CFLAGS) -DE_OPENING $(LDFLAGS) customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_opening
+	$(CC) $(CFLAGS) -DE_CLOSING $(LDFLAGS) customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_closing
+	$(CC) $(CFLAGS) -DE_NORMAL $(LDFLAGS) customer.cpp data.cpp generator.cpp main.cpp -o $(EXECUTABLE)_normal
 
 run:
 	@echo "Running experiments"
