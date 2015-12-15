@@ -2,8 +2,6 @@
 #ifndef IMS_PROJECT_SIMULATION_H
 #define IMS_PROJECT_SIMULATION_H
 
-#include <simlib.h>
-
 typedef struct {
     unsigned int kCapacity = 120,
             kQueueQuitLength = 25,
@@ -37,6 +35,17 @@ typedef struct {
             kEatingTime,
             kReturnTrayProcessTime;
 } ExperimentData;
+
+extern ExperimentData peak;
+extern ExperimentData stable;
+extern ExperimentData closing;
+extern ExperimentData typical;
+extern ExperimentData data;
+
+extern ExperimentChances chances;
+
+extern ExperimentEnvironment environment;
+
 
 
 #endif //IMS_PROJECT_SIMULATION_H
