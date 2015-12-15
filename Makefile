@@ -24,4 +24,4 @@ run:
 	./$(EXECUTABLE)_closing > ./experiments/closing.output
 
 clean:
-	@rm -rf $(EXECUTABLE) *.o* ./experiments
+	@rm -rf $(EXECUTABLE)* *.o* ./experiments
