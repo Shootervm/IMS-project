@@ -4,6 +4,28 @@
 
 #include "customer.h"
 
+Queue enter_queue("Vstupna rada");
+Facility tray_stand("Tackovac");
+
+Queue soup_queue("Rada na polievku");
+Facility soup_facility("Davanie polievky");
+
+Store food_store("Vydaj jedla", 2);
+
+Queue water_queue("Rada na vydaj pitia");
+Facility water_facility("Vydaj pitia");
+
+Queue etc_queue("Rada na vydaj etc");
+Facility etc_facility("Salaty, bagety, kolace");
+
+Queue cashier_queue("Rada na platenie");
+Facility cashier("Platenie");
+
+Store table_places("Stolovanie", environment.kCapacity);
+
+Queue return_tray_queue("Rada na odlozenie tacok");
+Facility return_tray("Pas na tacky");
+
 Customer::Customer() {
     Activate();
 }
@@ -139,8 +161,8 @@ void Customer::HandlePayment() {
 
     double payment = Random() * 100;
     // will process payment by card or cash
-    ProcessFacility(cashier,
-                    (payment <= chances.kPaymentByCash) ? data.kPaymentByCashTime : data.kPaymentByISICTime);
+    ProcessFacility(cashier, (payment <= chances.kPaymentByCash) ?
+                             data.kPaymentByCashTime : data.kPaymentByISICTime);
 
     ActivateQueue(cashier_queue);
 

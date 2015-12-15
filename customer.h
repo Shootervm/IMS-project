@@ -4,30 +4,24 @@
 
 #include <iostream>
 #include <vector>
-#include "data.h"
+#include <simlib.h>
+#include "simulation.h"
 
-// queue for tray_stand
-Queue enter_queue("Vstupna rada");
-Facility tray_stand("Tackovac");
+extern Queue enter_queue;
+extern Facility tray_stand;
+extern Queue soup_queue;
+extern Facility soup_facility;
+extern Store food_store;
+extern Queue water_queue;
+extern Facility water_facility;
+extern Queue etc_queue;
+extern Facility etc_facility;
+extern Queue cashier_queue;
+extern Facility cashier;
+extern Store table_places;
+extern Queue return_tray_queue;
+extern Facility return_tray;
 
-Queue soup_queue("Rada na polievku");
-Facility soup_facility("Davanie polievky");
-
-Store food_store("Vydaj jedla", 2); // davanie jedla
-
-Queue water_queue("Rada na vydaj pitia");
-Facility water_facility("Vydaj pitia");
-
-Queue etc_queue("Rada na vydaj etc");
-Facility etc_facility("Salaty, bagety, kolace");
-
-Queue cashier_queue("Rada na platenie");
-Facility cashier("Platenie");
-
-Store table_places("Stolovanie", environment.kCapacity);
-
-Queue return_tray_queue("Rada na odlozenie tacok");
-Facility return_tray("Pas na tacky");
 
 class Customer : public Process {
 public:
