@@ -11,7 +11,7 @@ ExperimentData peak = {
         7.3, // kWaterTakeTime
         5.5, // kETCTakeTime
         15.0, // kPaymentByCashTime
-        6.5, // kPaymentByISICTime
+        5.5, // kPaymentByISICTime
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
@@ -26,7 +26,7 @@ ExperimentData normal = {
         7.3, // kWaterTakeTime
         5.5, // kETCTakeTime
         15.0, // kPaymentByCashTime
-        6.5, // kPaymentByISICTime
+        5.5, // kPaymentByISICTime
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
@@ -41,7 +41,7 @@ ExperimentData closing = {
         7.3, // kWaterTakeTime
         5.5, // kETCTakeTime
         15.0, // kPaymentByCashTime
-        6.5, // kPaymentByISICTime
+        5.5, // kPaymentByISICTime
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
@@ -56,7 +56,7 @@ ExperimentData opening = {
         7.3, // kWaterTakeTime
         5.5, // kETCTakeTime
         15.0, // kPaymentByCashTime
-        6.5, // kPaymentByISICTime
+        5.5, // kPaymentByISICTime
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
@@ -72,7 +72,7 @@ ExperimentData typical = {
         7.3, // kWaterTakeTime
         5.5, // kETCTakeTime
         15.0, // kPaymentByCashTime
-        6.5, // kPaymentByISICTime
+        5.5, // kPaymentByISICTime
         1080.0, // kEatingTime
         4.0 // kReturnTrayProcessTime
 };
@@ -88,13 +88,13 @@ ExperimentChances chances = {
 
 #ifdef E_PEAK
 ExperimentData data = peak;
-#elif E_OPENING
+#elif defined E_OPENING
 ExperimentData data = opening;
-#elif E_NORMAL
+#elif defined  E_NORMAL
 ExperimentData data = normal;
-#elif E_CLOSING
+#elif defined  E_CLOSING
 ExperimentData data = closing;
-#elif E_TYPICAL
+#elif defined  E_TYPICAL
 ExperimentData data = typical;
 #else
 ExperimentData data = typical;

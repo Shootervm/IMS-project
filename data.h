@@ -1,9 +1,10 @@
-
 #ifndef IMS_PROJECT_DATA_H
 #define IMS_PROJECT_DATA_H
 
 typedef struct {
     unsigned int kCapacity = 120,
+            kFoodQueueCapacity = 9,
+            kCashierQueueCapacity = 10,
             kQueueQuitLength = 25,
             kQueueQuitChance = 15,
             quited = 0; // displays how many customers have decided to quit the  waiting line
